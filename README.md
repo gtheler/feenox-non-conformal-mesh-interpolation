@@ -67,5 +67,88 @@ The `run.sh` scripts performs three different steps:
     PRINT $1 $2 %.1e error_l2 error_max %g nodes elements
     ```
 
+Here is a sample output of running `run.sh`:
+
+```terminal
+$ ./run.sh
+creating source mesh 10................... 0.11 seconds
+populating source mesh 10 with f(x,y,z)... 0.01 seconds
+
+creating source mesh 20................... 0.57 seconds
+populating source mesh 20 with f(x,y,z)... 0.09 seconds
+
+creating source mesh 30................... 2.34 seconds
+populating source mesh 30 with f(x,y,z)... 0.60 seconds
+
+creating source mesh 40................... 7.56 seconds
+populating source mesh 40 with f(x,y,z)... 2.02 seconds
+
+creating source mesh 50................... 14.27 seconds
+populating source mesh 50 with f(x,y,z)... 3.71 seconds
+
+interpolating from 10 to 10... 0.02 seconds
+interpolating from 10 to 20... 0.16 seconds
+interpolating from 10 to 30... 0.74 seconds
+interpolating from 10 to 40... 2.01 seconds
+interpolating from 10 to 50... 4.13 seconds
+
+interpolating from 20 to 10... 0.12 seconds
+interpolating from 20 to 20... 0.22 seconds
+interpolating from 20 to 30... 0.94 seconds
+interpolating from 20 to 40... 2.46 seconds
+interpolating from 20 to 50... 5.41 seconds
+
+interpolating from 30 to 10... 0.73 seconds
+interpolating from 30 to 20... 1.00 seconds
+interpolating from 30 to 30... 1.66 seconds
+interpolating from 30 to 40... 3.57 seconds
+interpolating from 30 to 50... 6.31 seconds
+
+interpolating from 40 to 10... 1.87 seconds
+interpolating from 40 to 20... 2.10 seconds
+interpolating from 40 to 30... 3.00 seconds
+interpolating from 40 to 40... 3.56 seconds
+interpolating from 40 to 50... 7.28 seconds
+
+interpolating from 50 to 10... 3.39 seconds
+interpolating from 50 to 20... 3.69 seconds
+interpolating from 50 to 30... 4.58 seconds
+interpolating from 50 to 40... 6.43 seconds
+interpolating from 50 to 50... 7.46 seconds
+
+errors
+--------------------------------------------------
+src     dst     L2      max     nodes   elements
+10      10      9.6e-03 7.0e-06 1201    4979
+10      20      2.8e-03 2.9e-01 7411    37089
+10      30      1.3e-03 3.2e-01 22992   123264
+10      40      8.3e-04 3.0e-01 51898   289824
+10      50      5.9e-04 3.3e-01 98243   560473
+
+20      10      9.6e-03 1.1e-05 1201    4979
+20      20      2.5e-03 7.0e-06 7411    37089
+20      30      1.2e-03 1.5e-01 22992   123264
+20      40      6.8e-04 1.6e-01 51898   289824
+20      50      4.5e-04 1.6e-01 98243   560473
+
+30      10      9.6e-03 5.4e-02 1201    4979
+30      20      2.5e-03 8.2e-02 7411    37089
+30      30      1.1e-03 7.0e-06 22992   123264
+30      40      6.5e-04 1.1e-01 51898   289824
+30      50      4.2e-04 1.1e-01 98243   560473
+
+40      10      9.6e-03 2.7e-02 1201    4979
+40      20      2.5e-03 7.3e-02 7411    37089
+40      30      1.1e-03 6.6e-02 22992   123264
+40      40      6.3e-04 7.2e-06 51898   289824
+40      50      4.1e-04 8.2e-02 98243   560473
+
+50      10      9.6e-03 3.9e-02 1201    4979
+50      20      2.5e-03 5.4e-02 7411    37089
+50      30      1.1e-03 6.3e-02 22992   123264
+50      40      6.3e-04 6.2e-02 51898   289824
+50      50      4.0e-04 7.2e-06 98243   560473
+```
+
     
 To get rid of all the `.msh` and `.vtk` file run the `clean.sh` script.
