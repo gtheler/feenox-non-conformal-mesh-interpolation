@@ -1,0 +1,10 @@
+# the reference function
+f(x,y,z) = x + 2*y + 3*z + 4
+
+# read the f from the dst vtk
+READ_MESH cube-$1-$2-dst.vtk DIM 3 READ_FIELD f AS f_msh
+
+# compute max and L2 errors
+INTEGRATE (f_msh(x,y,z)-f(x,y,z))^2 RESULT error_l2
+FIND_EXTREMA abs(f_msh(x,y,z)-f(x,y,z)) NODES MAX error_max
+PRINT $1 $2 %.1e error_l2 error_max %g nodes elements

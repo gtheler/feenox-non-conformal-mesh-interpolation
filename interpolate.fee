@@ -1,0 +1,11 @@
+# read the function f(x,y,z) from the nodes of the source mesh
+READ_MESH cube-$1-src.msh DIM 3 READ_FUNCTION f
+
+# read the dest mesh
+READ_MESH cube-$2.msh
+
+f_ref(x,y,z) = x + 2*y + 3*z + 4
+
+# evaluate f(x,y,z) at the nodes of the dest mesh and write it into $1 -> $2
+# throw in the absolute error as well
+WRITE_MESH cube-$1-$2-dst.vtk f abs(f(x,y,z)-f_ref(x,y,z)) MESH cube-$2.msh

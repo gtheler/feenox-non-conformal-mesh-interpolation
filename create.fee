@@ -1,0 +1,8 @@
+# read the base mesh
+READ_MESH cube-$1.msh
+
+# define an algebraic function
+f(x,y,z) = x + 2*y + 3*z + 4
+
+# evaluate it at the nodes and write it into a "source" mesh
+WRITE_MESH cube-$1-src.msh f
