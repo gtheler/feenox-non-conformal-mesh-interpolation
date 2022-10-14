@@ -1,0 +1,24 @@
+# read the function f(x,y,z) from the nodes of the source mesh
+start = clock()
+READ_MESH cube-$1-src.msh DIM 3 READ_FUNCTION f
+wall_read_src = clock() - start
+
+# read the dest mesh
+start = clock()
+READ_MESH cube-$2.msh
+wall_read_dst = clock() - start
+
+f_ref(x,y,z) = x + 2*y + 3*z + 4
+
+# reference time to write a constant in a vtk
+start = clock()
+WRITE_MESH one.vtk MESH cube-$2.msh     1
+wall_write_one = clock() - start
+
+
+# interpolation + writing
+start = clock()
+WRITE_MESH cube-$1-$2-dst.vtk MESH cube-$2.msh     f
+wall_write_f = clock() - start
+
+PRINT $1 $2 %.3f wall_read_src wall_read_dst wall_write_one wall_write_f  wall_write_f-wall_write_one 0.5*(wall_write_f+wall_write_f-wall_write_one)
